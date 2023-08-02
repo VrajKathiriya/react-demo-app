@@ -1,26 +1,73 @@
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import Home from "./components/Home";
-import Contact from "./components/Contact";
-import About from "./components/About";
+import "./App.css";
+import { Route, Routes, NavLink } from "react-router-dom";
+import Welcome from "./components/Welcome";
 import User from "./components/User";
+import { CssBaseline } from "@material-ui/core";
+import Home from "./components/Home";
+import { purple } from "@material-ui/core/colors";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
-export default function App() {
+const theme = createTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      // main: purple[500],
+      light: "#ff4081",
+      main: purple[500],
+      dark: "#c51162",
+      contrastText: "#fff",
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: "#11cb5f",
+    },
+    typography: {
+      fontFamily: "Fira Sans",
+      h1: {
+        fontWeight: 300,
+        fontSize: "6rem",
+        lineHeight: 1.167,
+        letterSpacing: "-0.01562em",
+        color: "#ff4081 !important",
+      },
+    },
+  },
+});
+
+function App() {
   return (
-    <BrowserRouter>
+    <ThemeProvider theme={theme}>
       <div>
-        <NavLink to="/"> HOME </NavLink>
-        <NavLink to="/about"> ABOUT </NavLink>
-        <NavLink to="/contact"> CONTACT </NavLink>
-        <NavLink to="/user"> USER </NavLink>
-      </div>
-      <Routes>
-        <Route>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            background: "linear-gradient(120deg,#233142,#455d7a,#233142)",
+            height: 70,
+          }}
+        >
+          <NavLink to="/" className="link">
+            HOME
+          </NavLink>
+
+          <NavLink to="/welcome" className="link">
+            WELCOME
+          </NavLink>
+
+          <NavLink to="/user" className="link">
+            USER
+          </NavLink>
+        </div>
+
+        <Routes path="/">
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="user" element={<User name="vraj" role="student" />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/user" element={<User name="Vraj" role="student" />} />
+        </Routes>
+      </div>
+    </ThemeProvider>
   );
 }
+
+export default App;
