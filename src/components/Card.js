@@ -49,7 +49,7 @@ export default function SimpleCard() {
               student
             </Typography>
             <Typography variant="body2" component="p">
-              lorem ipsum dolor sit amet
+              endkef fjnfek djnkx kjdcn
             </Typography>
           </CardContent>
           <CardActions>
