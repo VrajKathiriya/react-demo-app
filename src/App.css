@@ -1,16 +1,23 @@
+:root {
+  --first: #1b262c;
+  --second: #0f4c75;
+  --third: #3282b8;
+  --fourth: #bbe1fa;
+}
+
 *::-webkit-scrollbar {
   display: none;
 }
 
-*{
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 .App {
   text-align: center;
 }
 
-iframe{
+iframe {
   display: none;
 }
 
@@ -26,7 +33,7 @@ iframe{
 }
 
 .App-header {
-  background-color: rgb(193, 132, 250);
+  background-color: var(--third);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,7 +44,7 @@ iframe{
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--fourth);
 }
 
 @keyframes App-logo-spin {

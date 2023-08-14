@@ -43,13 +43,13 @@ export default function SimpleCard() {
               USER
             </Typography>
             <Typography variant="h5" component="h2">
-              Vraj
+              VRAJ
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
               student
             </Typography>
             <Typography variant="body2" component="p">
-              endkef fjnfek djnkx kjdcn
+              lorem ipsum dolor sit amet
             </Typography>
           </CardContent>
           <CardActions>

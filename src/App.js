@@ -1,35 +1,37 @@
-import './App.css';
-import './index.js';
-import { Route, Routes, NavLink } from 'react-router-dom';
-import Welcome from './components/Welcome';
-import Register from './components/Register';
-import { CssBaseline, useTheme } from '@material-ui/core';
-import Home from './components/Home';
-import { purple } from '@material-ui/core/colors';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { ToastContainer, toa } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
-import Login from './components/Login';
-import Header from './components/Header';
-import { AuthProvider } from './contexts/auth';
-
-
+import "./App.css";
+import "./index.js";
+import { Route, Routes, NavLink } from "react-router-dom";
+import Register from "./components/Register";
+import { CssBaseline, useTheme } from "@material-ui/core";
+import Home from "./components/Home";
+import { purple } from "@material-ui/core/colors";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Login from "./components/Login";
+import Header from "./components/Header";
+import { AuthProvider } from "./contexts/auth";
+import { CartProvider } from "./contexts/cartContext";
+import EditBook from "./components/EditBook";
+import ProductPage from "./components/ProductPage";
+import Users from "./components/Users";
+import EditUser from "./components/EditUser";
 const theme = createTheme({
   palette: {
     primary: {
       // Purple and green play nicely together.
-      light: "#ff4081",
-      main: purple[600],
-      dark: "#c51162",
-      contrastText: "#fff"
+      light: "#bbe1fa",
+      main: "#0f4c75",
+      dark: "#1b262c",
+      contrastText: "#fff",
     },
     secondary: {
       // This is green.A700 as hex.
-      main: '#11cb5f',
+      main: "#0f4c75",
     },
   },
   typography: {
-    fontFamily: 'Fira Sans',
+    fontFamily: "Fira Sans",
     fontSize: 15,
     h1: {
       fontWeight: 300,
@@ -38,31 +40,33 @@ const theme = createTheme({
       letterSpacing: "-0.01562em",
       color: "#ff4081 !important",
     },
-
   },
 });
 
 function App() {
-
-
   // const theme=useTheme();
 
   return (
     <ThemeProvider theme={theme}>
       <AuthProvider>
-      <Header/>
-      <ToastContainer />
-      <CssBaseline />
-      <Routes path='/'>
-        <Route index element={<Home />} />
-        <Route path='/welcome' element={<Welcome />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-      </Routes>
-
+        <CartProvider>
+          <Header />
+          <ToastContainer />
+          <CssBaseline />
+          <Routes path="/">
+            <Route index element={<Home />} />
+            {/* <Route path='/welcome' element={<Welcome />} /> */}
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/editBook/:id" element={<EditBook />} />
+            <Route path="/product" element={<ProductPage />} />
+            <Route path="/add-book" element={<EditBook />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/editUser/:id" element={<EditUser />} />
+          </Routes>
+        </CartProvider>
       </AuthProvider>
     </ThemeProvider>
-
   );
 }
 
